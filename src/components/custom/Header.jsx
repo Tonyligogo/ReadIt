@@ -74,11 +74,9 @@ function Header() {
     if (!passwordPattern.test(password)) {
       setPasswordError('Password must be at least 8 characters long and contain both letters and numbers.');
       setDisabled(true);
-      console.log('i ran into an error')
       return false;
     } else {
       setPasswordError(null);
-      console.log('no error')
       setDisabled(false);
       return true;
     }
@@ -128,6 +126,7 @@ function Header() {
       return toast.error('Failed to log in. Please try again.',{id:'error3'})
     }
   };
+  
   return (
     <>
       <div className=" max-h-70px grid grid-cols-[auto_minmax(auto,_600px)_auto] justify-between items-center gap-3  py-3 border-b border-gray-500 ">

@@ -24,7 +24,6 @@ export async function createUserAccount(user){
     }
 
 }
-
 export async function saveUserToDB(user){
     console.log(user,'user I want')
     try {
@@ -39,7 +38,6 @@ export async function saveUserToDB(user){
        console.log(error,'ERROR from saveuser to database'); 
     }
 }
-
 export async function signInAccount(user) {
     try {
         const session = await account.createEmailPasswordSession(user.email, user.password);
@@ -49,7 +47,6 @@ export async function signInAccount(user) {
         return error;
     }
 }
-
 export async function getCurrentUser() {
     try {
         const currentAccount = await account.get();
@@ -66,7 +63,6 @@ export async function getCurrentUser() {
         return error;
     }
 }
-
 export async function signOutAccount() {
     try {
         const session = await account.deleteSession('current');
@@ -76,7 +72,6 @@ export async function signOutAccount() {
         return error;
     }
 }
-
 export async function createSubreadit(data) {
     try {
         const newDocument = await databases.createDocument(
@@ -90,8 +85,7 @@ export async function createSubreadit(data) {
         console.log(error, 'error in create subreadit function');
         return error;
     }
-}
-
+  }
 export async function createPost(post) {
     try {
       // Upload file to appwrite storage
@@ -135,7 +129,23 @@ export async function createPost(post) {
       console.log(error,'error creating new post');
     }
   }
-  
+  export async function sendComment(comment){
+    try {
+      const newComment = await databases.createDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.commentsCollectionId,
+        ID.unique(),
+        {
+          user:comment.user,
+          post:comment.post,
+          content:comment.content,
+        },
+      );
+      return newComment;
+    } catch (error) {
+      console.log(error,'error in send comment');
+    }
+  }
   // UPLOAD FILE
   export async function uploadFile(file) {
     try {
@@ -150,7 +160,6 @@ export async function createPost(post) {
       console.log(error,'error while uploading image file');
     }
   }
-  
   //GET FILE URL
   export function getFilePreview(fileId) {
     try {
@@ -211,6 +220,22 @@ export async function getSubreadits() {
       console.log(error,'error getting subs');
     }
   }
+export async function getSubreaditById(subId) {
+  if (!subId) throw new Error('SubId is required');
+  else{  
+    try {
+      const sub = await databases.getDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.subreaditsCollectionId,
+        subId
+      );
+      if (!sub) throw new Error('No subreadit found with that id');
+      return sub;
+    } catch (error) {
+      console.log(error,'error getting sub');
+    }
+  }
+}
 export async function likePost(data){
   console.log(data,'data')
   const {postId, newLikes} = data;
@@ -308,7 +333,6 @@ export async function updatePost(post) {
     console.log(error);
   }
 }
-
 // DELETE POST
 export async function deletePost(postId, imageId) {
   if (!postId || !imageId) return;

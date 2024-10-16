@@ -59,7 +59,7 @@ function CreateCommunity() {
   };
 
   return (
-    <div className="grid place-items-center">
+    <div className="grid h-full place-items-center">
       <div className=" bg-secondary rounded-lg p-5 w-[80%] ">
         <h2>Create a community</h2>
         <p className="text-muted-foreground text-sm">*Community names must be <b>unique</b> & must not have spaces between words</p>

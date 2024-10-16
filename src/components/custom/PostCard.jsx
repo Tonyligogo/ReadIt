@@ -12,7 +12,7 @@ function PostCard({post}) {
     <div className="post-card">
     <div className="flex justify-between">
       <div className="flex items-center gap-3">
-        <Link to={`/profile/${post.user.$id}`}>
+        <Link to={`/profile/${post.user?.$id}`}>
           <img
             src={
               post.user?.imageUrl 
@@ -23,7 +23,7 @@ function PostCard({post}) {
         </Link>
 
         <div className="flex gap-4 items-center">
-            <p>r/{post.subreadit.name}</p>
+            <p className="text-sm text-text-custom-neutral">{post.subreadit ? `r/${post?.subreadit?.name}` : `u/${post.user?.username}` }</p>
             <p className="text-sm text-[#333d42]">Posted {multiFormatDateString(post.$createdAt)}</p>
         </div>
       </div>

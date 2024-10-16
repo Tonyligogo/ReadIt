@@ -1,6 +1,7 @@
 export const QUERY_KEYS ={
     GET_RECENT_POSTS : 'getRecentPosts',
     GET_SUBREADITS : 'getSubreadits',
+    GET_SUBREADIT_BY_ID : 'getSubreaditById',
     GET_POST_BY_ID:'getPostById',
     GET_POSTS:'getPosts',
     GET_CURRENT_USER:'getCurrentUser',

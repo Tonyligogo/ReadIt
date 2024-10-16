@@ -131,7 +131,7 @@ function CreatePostForm({post, params, action}) {
           )}
         />
         <div className="flex justify-end gap-4 items-center">
-        <Button type="button">Cancel</Button>
+        <Button type="button" onClick={()=>navigate(-1)} disabled={isLoadingCreate || isLoadingUpdate}>Cancel</Button>
         <Button disabled={isLoadingCreate || isLoadingUpdate} type="submit">
           {action === 'update'? isLoadingUpdate? 'Updating ...' : 'Update Post' : isLoadingCreate? 'Creating...' : 'Create Post'}
         </Button>

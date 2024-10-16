@@ -52,7 +52,7 @@ function LeftSideBar() {
   return (
     <aside>
       <NavLink
-        to={"/home"}
+        to="/"
         className={`flex gap-2 items-center mt-4 p-2 pr-4 rounded-md ${
           pathname === "/home" ? "bg-btn" : "hover:bg-secondary"
         }`}

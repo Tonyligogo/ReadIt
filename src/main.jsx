@@ -11,7 +11,6 @@ import CreateCommunity from './pages/r/CreateCommunity.jsx'
 import Communities from './pages/communities/Communities.jsx'
 import CommunityPosts from './pages/communities/community/[communityName]/CommunityPosts.jsx'
 import CreatePost from './pages/communities/community/[communityName]/CreatePost.jsx'
-import HomePage from './pages/HomePage.jsx'
 import EditPost from './pages/EditPost.jsx'
 import PostDetails from './pages/PostDetails.jsx'
 import Explore from './pages/Explore.jsx'
@@ -24,10 +23,6 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home/>,
         children:[
-          {
-            path: '/home',
-            element: <HomePage/>,
-          },
           {
             path: '/gaming',
             element: <h1>Gaming</h1>,

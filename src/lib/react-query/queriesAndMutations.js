@@ -1,4 +1,4 @@
-import { createPost, createSubreadit, createUserAccount, deletePost, getInfinitePosts, getPostById, getRecentPosts, getSubreadits, getUserPosts, likePost, searchPosts, signInAccount, signOutAccount, updatePost } from '@/appwrite/api'
+import { createPost, createSubreadit, createUserAccount, deletePost, getInfinitePosts, getPostById, getRecentPosts, getSubreaditById, getSubreadits, getUserPosts, likePost, searchPosts, sendComment, signInAccount, signOutAccount, updatePost } from '@/appwrite/api'
 import{
   useInfiniteQuery,
     useMutation,
@@ -41,6 +41,11 @@ export const useCreatePost = () => {
       },
     });
   };
+export const useSendComment = () => {
+    return useMutation({
+      mutationFn: (comment) => sendComment(comment),
+    });
+  };
   export const useGetRecentPosts = () => {
     return useQuery({
       queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
@@ -51,6 +56,13 @@ export const useCreatePost = () => {
     return useQuery({
       queryKey: [QUERY_KEYS.GET_SUBREADITS],
       queryFn: getSubreadits,
+    });
+  };
+  export const useGetSingleSubreadit = (subId) => {
+    return useQuery({
+      queryKey: [QUERY_KEYS.GET_SUBREADIT_BY_ID, subId],
+      queryFn: () => getSubreaditById(subId),
+      enabled:!!subId,
     });
   };
   export const useLikePost = () => {
