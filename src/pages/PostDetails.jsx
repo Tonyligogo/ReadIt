@@ -92,7 +92,7 @@ const PostDetails = () => {
         
       </div>
         <div className="ml-10">
-          {post.comments?.map((comment)=>(
+          {post?.comments?.map((comment)=>(
             <div key={comment.$id}>
               <div className="flex items-center gap-2">
               <img
