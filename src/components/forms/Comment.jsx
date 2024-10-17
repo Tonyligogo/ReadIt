@@ -44,6 +44,7 @@ function Comment({cancel, postId, userId}) {
         if(!newPost){
             throw Error
         }else{
+            setComment('');
             toast.success('Comment sent',{id:'success'})
         }          
     }
